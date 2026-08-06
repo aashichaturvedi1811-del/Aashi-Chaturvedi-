@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+int main() {
+    // Write C++ code here
+int matrix[2][3]={{2,3,4},{4,5,6}};
+int maxnumber=matrix[0][0];
+for (int i=0;i<2;i++) {
+       for (int j=0;j<3;j++){ 
+           if(matrix[i][j]>maxnumber){
+               maxnumber=matrix[i][j];
+           }
+}
+}
+    cout<<"the greatest number is : "<<maxnumber<<endl; 
+    return 0;
+    
+}
