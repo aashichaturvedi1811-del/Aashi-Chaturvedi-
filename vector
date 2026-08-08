@@ -1,0 +1,45 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    // Write C++ code here
+ vector<int> numbers;
+ // adding elements to the vector
+ 
+ numbers.push_back(10);
+ numbers.push_back(20);
+ numbers.push_back(30);
+ numbers.push_back(40);
+ //displaying vector elements.
+ cout<< "vector elements: ";
+ 
+ for (int i=0;i<numbers.size();i++) {
+     cout<<numbers[i]<<" ";
+ }
+ cout<<endl;
+ 
+ //displaying the size of vector.
+ 
+ cout<<"size of vector: "<<numbers.size()<<endl;
+ 
+ //adding another element.
+ numbers.push_back(60);
+ 
+ cout<<"after adding 60: ";
+ for (int i=0;i<numbers.size();i++) {
+     cout<<numbers[i]<<" ";
+ }
+ cout<<endl;
+ 
+ //removing the last element.
+ numbers.pop_back();
+ cout<<"after removing last element: ";
+ 
+ for(int i=0;i<numbers.size();i++) {
+     cout<<numbers[i]<<" ";
+ }
+ cout<<endl;
+ 
+    return 0;
+}
