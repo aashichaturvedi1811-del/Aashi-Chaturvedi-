@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() 
+{
+   vector<int>numbers;
+
+   numbers.push_back(100);
+   numbers.push_back(200);
+   numbers.push_back(300);
+   numbers.push_back(400);
+   numbers.push_back(500);
+
+   int maximum=numbers[0];
+
+  for (int i=0;i<numbers.size();i++) {
+
+    if (numbers[i]>maximum) {
+
+        maximum=numbers[i];
+    }
+  }
+cout<< "Maximum Element is: "<<maximum<<endl;
+
+    return 0;
+}
