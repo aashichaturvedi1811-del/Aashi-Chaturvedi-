@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+#define MAX 5
+
+int stack[MAX];
+int top = -1;
+
+int isEmpty() 
+{ if(top == -1)
+return 1;
+else
+return 0;
+}
+
+int isFull()
+{ if(top == MAX - 1)
+return 1;
+else
+return 0;
+}
+
+void push(int value)
+{
+    if(isFull())
+    {
+        cout<<"stacj overflow"<<endl;
+    }
+    else
+    {
+        top = top + 1;
+        stack[top] = value;
+        cout<<value<<"pushed"<<endl;
+    
+    }
+    
+}
+
+void pop()
+{
+    if(isEmpty())
+    {
+        cout<<"stack underflow"<<endl;
+    }
+    else
+    {
+        cout<<stack[top]<<"popped"<<endl;
+        top = top - 1;
+    }
+}
+
+
+int main()
+{
+   push(10);
+   push(20);
+   push(30);
+   pop();
+   push(40);
+    return 0;
+}
