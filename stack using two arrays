@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+#define MAX 5
+int A[MAX];
+int B[MAX];
+int top = - 1;
+
+void push(int x)
+{ 
+    if (top == MAX - 1)
+    { cout<<"stack overflow\n";
+    return;
+    }
+       top++;
+
+    if (top % 2 == 0)
+  { A[top/2] = x;
+  }
+   else 
+ { 
+    B[top/2] = x;
+ }
+}
+
+void pop()
+    {
+        if (top == -1)
+        {
+            cout<<"stack underflow"<<endl;
+        }
+        int x;
+        if (top % 2 == 0)
+        {
+            x = A[top/2];
+        }
+        else {
+            x = B[top/2];
+        }
+    }
+
+void display()
+{
+    if (top == - 1) 
+    { 
+        cout<<"stack is empty"<<endl;
+        return;
+    }
+
+    int i = top;
+
+    while(i>=0)
+    {
+        if (i % 2 == 0)
+        {
+            cout<<A [i/2]<<" ";
+        }
+        else{
+            cout<<B [i/2]<<" ";
+        }
+        i--;
+    }
+    cout<<endl;
+}
+
+int main() {
+    // Write C++ code here
+   push(10);
+   push(20);
+   push(30);
+   push(40);
+   push(50);
+   
+
+   cout<<"stack elements: ";
+   display();
+
+   pop();
+
+   cout<<"after POP: ";
+   display();
+
+    return 0;
+}
