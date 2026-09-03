@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <climits>
+
+using namespace std;
+
+int largestRectangleArea(vector<int>& heights)
+{
+    int n = heights.size();
+
+    int maxArea = 0;
+
+    // Choose starting index
+    for (int i = 0; i < n; i++)
+    {
+        // Choose ending index
+        for (int j = i; j < n; j++)
+        {
+            // Find minimum height in range [i...j]
+            int minHeight = INT_MAX;
+
+            for (int k = i; k <= j; k++)
+            {
+                minHeight = min(minHeight, heights[k]);
+            }
+
+            // Width of rectangle
+            int width = j - i + 1;
+
+            // Area
+            int area = minHeight * width;
+
+            // Update maximum
+            maxArea = max(maxArea, area);
+        }
+    }
+
+    return maxArea;
+}
+
+int main()
+{
+    vector<int> heights = {2, 1, 5, 6, 2, 3};
+
+    int answer = largestRectangleArea(heights);
+
+    cout << "Largest Rectangle Area = " << answer << endl;
+
+    return 0;
+}
