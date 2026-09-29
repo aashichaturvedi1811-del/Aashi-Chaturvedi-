@@ -1,0 +1,136 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+#define MAX 100
+
+class Stack
+{
+    char stack[MAX];
+    int top;
+
+public:
+
+    Stack()
+    {
+        top = -1;
+    }
+
+    void push(char x)
+    {
+        if (top == MAX - 1)
+        {
+            cout << "Stack Overflow";
+        }
+        else
+        {
+            top++;
+            stack[top] = x;
+        }
+    }
+
+    char pop()
+    {
+        if (top == -1)
+        {
+            return '\0';
+        }
+        else
+        {
+            return stack[top--];
+        }
+    }
+
+    char peek()
+    {
+        if (top == -1)
+            return '\0';
+
+        return stack[top];
+    }
+
+    bool isEmpty()
+    {
+        return top == -1;
+    }
+};
+
+int precedence(char op)
+{
+    if (op == '^')
+        return 3;
+
+    if (op == '*' || op == '/')
+        return 2;
+
+    if (op == '+' || op == '-')
+        return 1;
+
+    return 0;
+}
+
+string infixToPostfix(string exp)
+{
+    Stack s;
+    string result = "";
+
+    for (char c : exp)
+    {
+        // Operand
+        if (isalnum(c))
+        {
+            result += c;
+        }
+
+        // Opening bracket
+        else if (c == '(')
+        {
+            s.push(c);
+        }
+
+        // Closing bracket
+        else if (c == ')')
+        {
+            while (!s.isEmpty() && s.peek() != '(')
+            {
+                result += s.pop();
+            }
+
+            s.pop();
+        }
+
+        // Operator
+        else
+        {
+            while (!s.isEmpty() &&
+                   s.peek() != '(' &&
+                   precedence(s.peek()) >= precedence(c))
+            {
+                result += s.pop();
+            }
+
+            s.push(c);
+        }
+    }
+
+    // Pop remaining operators
+    while (!s.isEmpty())
+    {
+        result += s.pop();
+    }
+
+    return result;
+}
+
+int main()
+{
+    string exp;
+
+    cout << "Enter Infix Expression: ";
+    cin >> exp;
+
+    cout << "Postfix Expression: "
+         << infixToPostfix(exp);
+
+    return 0;
+}
